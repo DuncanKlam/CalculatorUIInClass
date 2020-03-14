@@ -33,9 +33,16 @@ public class Calculator {
     }
 
     public String calculate(String toCalculate) {
+        var newNumberInteger = 0;
         var mainNumberInteger = Integer.parseInt(previousNumber);
-        var newNumberInteger = Integer.parseInt(toCalculate);
         var result = newNumberInteger;
+
+        if (toCalculate.isEmpty()){
+            if(calculationToPerform.contains("mult") || calculationToPerform.contains("div")){
+                newNumberInteger = 1;
+            }
+        }
+        else{ newNumberInteger = Integer.parseInt(toCalculate); }
 
         if (calculationToPerform.contains("add")){
             result = mainNumberInteger + newNumberInteger;
