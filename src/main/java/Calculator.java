@@ -1,11 +1,12 @@
+import java.util.Map;
+
 public class Calculator {
 
     String mainNumber;
-    String previousNumber = "0";
-    String calculationToPerform = "";
-
     String memNumber = "0";
 
+    String[][] numberAndOperationArray = new String[50][2];
+    int NAOAIndex = 0;
 
     public Calculator() {
         this("");
@@ -20,49 +21,72 @@ public class Calculator {
     }
 
     public void resetMainNumber() {
-        mainNumber = "";
+        mainNumber = "0";
     }
 
     public String getMainNumber() {
         return mainNumber;
     }
 
-    public void storeAndResetMainNumber() {
-        previousNumber = mainNumber;
+    public void addOperationAndValueToArray(String number, String operation) {
+        numberAndOperationArray[NAOAIndex][0] = number;
+        numberAndOperationArray[NAOAIndex][1] = operation;
+        NAOAIndex++;
         resetMainNumber();
     }
 
-    public String calculate(String toCalculate) {
+    public String calculate() {
         var newNumberInteger = 0;
-        var mainNumberInteger = Integer.parseInt(previousNumber);
-        var result = newNumberInteger;
-
-        if (toCalculate.isEmpty()){
-            if(calculationToPerform.contains("mult") || calculationToPerform.contains("div")){
+        if (getRecentNumberToOperateOn(NAOAIndex-1).isEmpty()){
+            if(getRecentOperationToPerform(NAOAIndex).contains("mult") || getRecentOperationToPerform(NAOAIndex).contains("div")){
                 newNumberInteger = 1;
             }
         }
-        else{ newNumberInteger = Integer.parseInt(toCalculate); }
+        else{ newNumberInteger = Integer.parseInt(getRecentNumberToOperateOn(NAOAIndex-1)); }
 
-        if (calculationToPerform.contains("add")){
-            result = mainNumberInteger + newNumberInteger;
+        var result = 0;
+        var valueToOperateOn = Integer.parseInt(getRecentNumberToOperateOn(0));
+        for (int i = 0; i < NAOAIndex; i++){
+            var calculation = getRecentOperationToPerform(i);
+            var nextNumberInArray = 0;
+            if (calculation.contains("calculate")){
+                nextNumberInArray = 0;
+            } else{ nextNumberInArray = Integer.parseInt(getRecentNumberToOperateOn(i+1)); }
+
+            if (calculation.contains("add")){
+                result = valueToOperateOn + nextNumberInArray;
+            }
+            else if (calculation.contains("subt")){
+                result = valueToOperateOn - nextNumberInArray;
+            }
+            else if (calculation.contains("mult")){
+                result = valueToOperateOn * nextNumberInArray;
+            }
+            else if (calculation.contains("div")){
+                result = valueToOperateOn / nextNumberInArray;
+            }
+            valueToOperateOn = result;
         }
-        else if (calculationToPerform.contains("subt")){
-            result = mainNumberInteger - newNumberInteger;
-        }
-        else if (calculationToPerform.contains("mult")){
-            result = mainNumberInteger * newNumberInteger;
-        }
-        else if (calculationToPerform.contains("div")){
-            result = mainNumberInteger / newNumberInteger;
-        }
-        return Integer.toString(result);
+        return Integer.toString(valueToOperateOn);
     }
 
+    public String getRecentOperationToPerform(int index){
+        return numberAndOperationArray[index][1];
+    }
+    public String getRecentNumberToOperateOn(int index) {return numberAndOperationArray[index][0];}
+
     public void holyHandGrenade(){
-        calculationToPerform = "";
-        mainNumber = "0";
-        previousNumber = "0";
+        resetMainNumber();
+        NAOAIndex = 0;
+        resetNAOArray();
+    }
+
+    public void resetNAOArray() {
+        NAOAIndex = 0;
+        for(int i=0; i<numberAndOperationArray.length-1; i++){
+            numberAndOperationArray[i][0]="";
+            numberAndOperationArray[i][1]="";
+        }
     }
 
     public void addToMemoryValue(String aNumber) {
@@ -85,7 +109,4 @@ public class Calculator {
         return memNumber;
     }
 
-    public void resetCalculationToPerform() {
-        calculationToPerform = "";
-    }
 }

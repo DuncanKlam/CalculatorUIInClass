@@ -8,6 +8,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
     Calculator calculator = new Calculator();
     JLabel displayLabel;
+    JLabel operationsListLabel;
     JButton clearButton;
 
     public CalcUI() {
@@ -28,9 +29,14 @@ public class CalcUI extends JFrame implements ActionListener {
         var displayLabelConstraints = new GridBagConstraints(0, 0, 3, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(20, 20, 20, 20), 0, 0);
         panel.add(displayLabel, displayLabelConstraints);
 
+        //Make calculator window display
+        operationsListLabel = new JLabel("");
+        var operationsListLabelConstraints = new GridBagConstraints(0, 1, 4, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(20, 20, 20, 20), 0, 0);
+        panel.add(operationsListLabel, operationsListLabelConstraints);
+
         //Make 0 Button
         JButton button0 = new JButton("0");
-        var button0constraints = new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button0constraints = new GridBagConstraints(0, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button0.addActionListener(e -> {
             calculator.appendToMainNumber("0");
             displayLabel.setText(calculator.getMainNumber());
@@ -39,7 +45,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 1 button
         JButton button1 = new JButton("1");
-        var button1constraints = new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button1constraints = new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button1.addActionListener(e -> {
             calculator.appendToMainNumber("1");
             displayLabel.setText(calculator.getMainNumber());
@@ -48,7 +54,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 2 button
         JButton button2 = new JButton("2");
-        var button2constraints = new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button2constraints = new GridBagConstraints(1, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button2.addActionListener(e -> {
             calculator.appendToMainNumber("2");
             displayLabel.setText(calculator.getMainNumber());
@@ -57,7 +63,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 3 button
         JButton button3 = new JButton("3");
-        var button3constraints = new GridBagConstraints(2, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button3constraints = new GridBagConstraints(2, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button3.addActionListener(e -> {
             calculator.appendToMainNumber("3");
             displayLabel.setText(calculator.getMainNumber());
@@ -66,7 +72,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 4 button
         JButton button4 = new JButton("4");
-        var button4constraints = new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button4constraints = new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button4.addActionListener(e -> {
             calculator.appendToMainNumber("4");
             displayLabel.setText(calculator.getMainNumber());
@@ -75,7 +81,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 5 button
         JButton button5 = new JButton("5");
-        var button5constraints = new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button5constraints = new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button5.addActionListener(e -> {
             calculator.appendToMainNumber("5");
             displayLabel.setText(calculator.getMainNumber());
@@ -84,7 +90,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 6 button
         JButton button6 = new JButton("6");
-        var button6constraints = new GridBagConstraints(2, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button6constraints = new GridBagConstraints(2, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button6.addActionListener(e -> {
             calculator.appendToMainNumber("6");
             displayLabel.setText(calculator.getMainNumber());
@@ -93,7 +99,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 7 button
         JButton button7 = new JButton("7");
-        var button7constraints = new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button7constraints = new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button7.addActionListener(e -> {
             calculator.appendToMainNumber("7");
             displayLabel.setText(calculator.getMainNumber());
@@ -102,7 +108,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 8 button
         JButton button8 = new JButton("8");
-        var button8constraints = new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button8constraints = new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button8.addActionListener(e -> {
             calculator.appendToMainNumber("8");
             displayLabel.setText(calculator.getMainNumber());
@@ -111,7 +117,7 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make 9 button
         JButton button9 = new JButton("9");
-        var button9constraints = new GridBagConstraints(2, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var button9constraints = new GridBagConstraints(2, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         button9.addActionListener(e -> {
             calculator.appendToMainNumber("9");
             displayLabel.setText(calculator.getMainNumber());
@@ -120,31 +126,31 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make + button
         JButton plusButton = new JButton("+");
-        var plusButtonConstraints = new GridBagConstraints(3, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var plusButtonConstraints = new GridBagConstraints(3, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         plusButton.addActionListener(this);
         panel.add(plusButton, plusButtonConstraints);
 
         //Make - button
         JButton minusButton = new JButton("-");
-        var minusButtonConstraints = new GridBagConstraints(3, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var minusButtonConstraints = new GridBagConstraints(3, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         minusButton.addActionListener(this);
         panel.add(minusButton, minusButtonConstraints);
 
         //Make * button
         JButton multiplyButton = new JButton("*");
-        var multiplyButtonConstraints = new GridBagConstraints(3, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var multiplyButtonConstraints = new GridBagConstraints(3, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         multiplyButton.addActionListener(this);
         panel.add(multiplyButton, multiplyButtonConstraints);
 
         //Make / button
         JButton divideButton = new JButton("/");
-        var divideButtonConstraints = new GridBagConstraints(3, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var divideButtonConstraints = new GridBagConstraints(3, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         divideButton.addActionListener(this);
         panel.add(divideButton, divideButtonConstraints);
 
         //Make = button
         JButton equalButton = new JButton("=");
-        var equalButtonConstraints = new GridBagConstraints(1, 4, 2, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var equalButtonConstraints = new GridBagConstraints(1, 5, 2, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         equalButton.addActionListener(this);
         panel.add(equalButton, equalButtonConstraints);
 
@@ -166,25 +172,25 @@ public class CalcUI extends JFrame implements ActionListener {
 
         //Make M+ button
         JButton memPlusButton = new JButton("M+");
-        var memPlusButtonConstraints = new GridBagConstraints(4, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var memPlusButtonConstraints = new GridBagConstraints(4, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         memPlusButton.addActionListener(this);
         panel.add(memPlusButton, memPlusButtonConstraints);
 
         //Make M- button
         JButton memMinusButton = new JButton("M-");
-        var memMinusButtonConstraints = new GridBagConstraints(4, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var memMinusButtonConstraints = new GridBagConstraints(4, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         memMinusButton.addActionListener(this);
         panel.add(memMinusButton, memMinusButtonConstraints);
 
         //Make MC button
         JButton memClearButton = new JButton("MC");
-        var memClearButtonConstraints = new GridBagConstraints(4, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var memClearButtonConstraints = new GridBagConstraints(4, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         memClearButton.addActionListener(this);
         panel.add(memClearButton, memClearButtonConstraints);
 
         //Make MR button
         JButton memReadButton = new JButton("MR");
-        var memReadButtonConstraints = new GridBagConstraints(4, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
+        var memReadButtonConstraints = new GridBagConstraints(4, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 0, 0);
         memReadButton.addActionListener(this);
         panel.add(memReadButton, memReadButtonConstraints);
 
@@ -204,10 +210,12 @@ public class CalcUI extends JFrame implements ActionListener {
         clearButton.setText("C");
         if (((JButton) e.getSource()).getText().equals("=")) {
             //Equals sign special case
-            String result = calculator.calculate(displayLabel.getText());
-            calculator.resetMainNumber();
-            calculator.resetCalculationToPerform();
+            calculator.addOperationAndValueToArray(displayLabel.getText(),"calculate");
+            String result = calculator.calculate();
+            operationsListLabel.setText("");
             displayLabel.setText(result);
+            calculator.resetMainNumber();
+            calculator.resetNAOArray();
         }
         else if (((JButton) e.getSource()).getText().contains("M")) {
             //Memory Access Controls
@@ -226,16 +234,16 @@ public class CalcUI extends JFrame implements ActionListener {
         }
         else {
             //Basic Calculation Controls
-            calculator.storeAndResetMainNumber();
             if (((JButton) e.getSource()).getText().equals("+")) {
-                calculator.calculationToPerform = "add";
+                calculator.addOperationAndValueToArray(displayLabel.getText(),"add");
             } else if (((JButton) e.getSource()).getText().equals("-")) {
-                calculator.calculationToPerform = "subtract";
+                calculator.addOperationAndValueToArray(displayLabel.getText(),"subtract");
             } else if (((JButton) e.getSource()).getText().equals("*")) {
-                calculator.calculationToPerform = "multiply";
+                calculator.addOperationAndValueToArray(displayLabel.getText(),"multipy");
             } else if (((JButton) e.getSource()).getText().equals("/")) {
-                calculator.calculationToPerform = "divide";
+                calculator.addOperationAndValueToArray(displayLabel.getText(),"divide");
             }
+            operationsListLabel.setText(operationsListLabel.getText() + displayLabel.getText() + ((JButton) e.getSource()).getText());
             displayLabel.setText(calculator.getMainNumber());
         }
     }
