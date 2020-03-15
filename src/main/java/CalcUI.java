@@ -165,6 +165,7 @@ public class CalcUI extends JFrame implements ActionListener {
             else if(clearButton.getText().contentEquals("CE")){
                 calculator.holyHandGrenade();
                 clearButton.setText("C");
+                operationsListLabel.setText("");
             }
             displayLabel.setText(calculator.getMainNumber());
         });

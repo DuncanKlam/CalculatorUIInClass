@@ -4,6 +4,7 @@ public class Calculator {
 
     String mainNumber;
     String memNumber = "0";
+    Boolean justReset = false;
 
     String[][] numberAndOperationArray = new String[50][2];
     int NAOAIndex = 0;
@@ -17,11 +18,15 @@ public class Calculator {
     }
 
     public void appendToMainNumber(String toAppend) {
-        mainNumber += toAppend;
+        if (justReset){
+            mainNumber = toAppend;
+            justReset = false;
+        } else { mainNumber += toAppend; }
     }
 
     public void resetMainNumber() {
         mainNumber = "0";
+        justReset = true;
     }
 
     public String getMainNumber() {
@@ -36,13 +41,11 @@ public class Calculator {
     }
 
     public String calculate() {
-        var newNumberInteger = 0;
-        if (getRecentNumberToOperateOn(NAOAIndex-1).isEmpty()){
-            if(getRecentOperationToPerform(NAOAIndex).contains("mult") || getRecentOperationToPerform(NAOAIndex).contains("div")){
-                newNumberInteger = 1;
+        if (getRecentNumberToOperateOn(NAOAIndex-1) == "0"){
+            if(getRecentOperationToPerform(NAOAIndex-2).contains("mult") || getRecentOperationToPerform(NAOAIndex-2).contains("div")){
+                numberAndOperationArray[NAOAIndex-1][0] = "1";
             }
         }
-        else{ newNumberInteger = Integer.parseInt(getRecentNumberToOperateOn(NAOAIndex-1)); }
 
         var result = 0;
         var valueToOperateOn = Integer.parseInt(getRecentNumberToOperateOn(0));
@@ -70,9 +73,7 @@ public class Calculator {
         return Integer.toString(valueToOperateOn);
     }
 
-    public String getRecentOperationToPerform(int index){
-        return numberAndOperationArray[index][1];
-    }
+    public String getRecentOperationToPerform(int index){return numberAndOperationArray[index][1];}
     public String getRecentNumberToOperateOn(int index) {return numberAndOperationArray[index][0];}
 
     public void holyHandGrenade(){
